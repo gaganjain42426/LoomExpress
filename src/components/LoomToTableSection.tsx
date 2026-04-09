@@ -14,10 +14,10 @@ const LoomToTableSection = () => {
           transition={{ duration: 0.8 }}
         >
           <p className="mb-3 font-sans text-sm uppercase tracking-[0.2em] text-muted-foreground">
-            Sustainability
+            Full Village Immersion
           </p>
           <h2 className="text-4xl font-light text-foreground md:text-5xl">
-            The Loom to Table
+            Farm, Loom & Table
           </h2>
         </motion.div>
 
@@ -59,10 +59,7 @@ const LoomToTableSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <p className="font-sans text-base leading-relaxed text-muted-foreground">
-            From the loom to the land, every thread of Banskho is woven into a sustainable,
-            community-driven ecosystem. Our organic garden yields the freshest produce for your
-            table, while our two resident cows provide fresh milk each morning. It's not just a
-            visit — it's a way of life.
+            In our Full Village Immersion, lunch isn't an afterthought — it's part of the experience. Our organic garden grows the vegetables that land on your thali the same morning. Our two resident cows provide fresh milk for your chai. Everything on your plate comes from within walking distance of where you sit. This is Rajasthani hospitality at its most honest.
           </p>
         </motion.div>
       </div>

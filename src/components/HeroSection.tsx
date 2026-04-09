@@ -39,7 +39,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          Experience the soul of Banskho through heritage rug-making and mountain-side luxury.
+          A working village of 200 artisans, 40km from Jaipur. Come experience a 400-year-old craft — not as a tourist, but as a participant.
         </motion.p>
 
         <motion.a
