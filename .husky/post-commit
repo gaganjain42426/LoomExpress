@@ -1,0 +1,17 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Auto-push to GitHub after every commit
+BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+if [ -n "$BRANCH" ]; then
+    echo "⏳ Pushing to GitHub..."
+    git push origin "$BRANCH" 2>/dev/null
+    if [ $? -eq 0 ]; then
+        echo "✅ Changes automatically pushed to GitHub (branch: $BRANCH)"
+    else
+        echo "⚠️  Auto-push failed. You can push manually with: git push origin $BRANCH"
+    fi
+else
+    echo "⚠️  Could not determine current branch"
+fi

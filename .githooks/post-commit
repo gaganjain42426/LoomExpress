@@ -1,0 +1,17 @@
+#!/bin/bash
+# Post-commit hook to automatically push to GitHub
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+if [ -n "$BRANCH" ]; then
+    echo ""
+    echo "⏳ Auto-pushing to GitHub..."
+    git push origin "$BRANCH" 2>&1 | grep -v "^remote:"
+    if [ $? -eq 0 ]; then
+        echo "✅ Successfully pushed to GitHub"
+    else
+        echo "⚠️  Push failed - you may be offline or authentication expired"
+        echo "    Try pushing manually: git push origin $BRANCH"
+    fi
+    echo ""
+fi
