@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NationalityProvider } from "@/context/NationalityContext";
 import NationalityModal from "@/components/NationalityModal";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import PricingToggle from "@/components/PricingToggle";
+import BackToTopButton from "@/components/BackToTopButton";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -20,7 +20,7 @@ const App = () => (
         <Sonner />
         <NationalityModal />
         <WhatsAppButton />
-        <PricingToggle />
+        <BackToTopButton />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />

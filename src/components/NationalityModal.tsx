@@ -4,15 +4,15 @@ import { useNationality } from "@/context/NationalityContext";
 import logo from "@/assets/vimla-logo.png";
 
 const NationalityModal: React.FC = () => {
-  const { visitorType, setVisitorType } = useNationality();
+  const { visitorType, setVisitorType, isLoaded } = useNationality();
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // Show modal only if no selection has been made yet
-    if (!visitorType) {
-      setShowModal(true);
+    // Only decide after localStorage has been read
+    if (isLoaded) {
+      setShowModal(!visitorType);
     }
-  }, [visitorType]);
+  }, [visitorType, isLoaded]);
 
   const handleSelect = (type: "indian" | "foreign") => {
     setVisitorType(type);

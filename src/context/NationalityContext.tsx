@@ -6,6 +6,7 @@ interface NationalityContextType {
   visitorType: NationalityType;
   setVisitorType: (type: NationalityType) => void;
   toggleVisitorType: () => void;
+  isLoaded: boolean;
 }
 
 const NationalityContext = createContext<NationalityContextType | undefined>(undefined);
@@ -35,7 +36,7 @@ export const NationalityProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
 
   return (
-    <NationalityContext.Provider value={{ visitorType, setVisitorType, toggleVisitorType }}>
+    <NationalityContext.Provider value={{ visitorType, setVisitorType, toggleVisitorType, isLoaded }}>
       {children}
     </NationalityContext.Provider>
   );

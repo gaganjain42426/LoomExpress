@@ -10,7 +10,9 @@ interface Experience {
   foreignPriceDisplay: string;
   description: string;
   features: string[];
+  takeHome: string;
   popular?: boolean;
+  accentColor: string;
 }
 
 const experiences: Experience[] = [
@@ -29,6 +31,8 @@ const experiences: Experience[] = [
       "Showroom visit with finished rugs (₹5K–₹5L)",
       "Open Gypsy ride to & from the village",
     ],
+    takeHome: "Photos, memories & artisan chai experience",
+    accentColor: "#2E4F7E",
   },
   {
     title: "Full Village Immersion",
@@ -45,7 +49,9 @@ const experiences: Experience[] = [
       "Heritage village tour by Open Gypsy (Banskho Fort, Haveli, bangle & pot-making)",
       "Souvenir gift to take home",
     ],
+    takeHome: "Your hand-woven sample, souvenir gift & a full Rajasthani meal",
     popular: true,
+    accentColor: "#C4735A",
   },
 ];
 
@@ -74,7 +80,7 @@ const PackagesSection = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.title}
-              className={`group relative flex flex-col border border-border p-8 transition-all duration-500 hover:border-primary hover:shadow-lg ${
+              className={`group relative flex flex-col overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1 hover:border-primary hover:shadow-xl ${
                 exp.popular ? "md:col-span-1" : ""
               }`}
               initial={{ opacity: 0, y: 30 }}
@@ -82,11 +88,15 @@ const PackagesSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
             >
-              {exp.popular && (
-                <span className="absolute -top-3 left-8 bg-primary px-4 py-1 font-sans text-xs uppercase tracking-widest text-primary-foreground">
-                  Most Popular
-                </span>
-              )}
+              {/* Top accent bar */}
+              <div className="h-1.5 w-full" style={{ backgroundColor: exp.accentColor }} />
+
+              <div className="flex flex-col flex-1 p-8">
+                {exp.popular && (
+                  <span className="absolute right-6 top-5 bg-[#C4735A] px-3 py-1 font-sans text-xs uppercase tracking-widest text-white">
+                    Most Popular
+                  </span>
+                )}
 
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -119,16 +129,30 @@ const PackagesSection = () => {
                   <span className="font-sans text-sm text-muted-foreground"> per person</span>
                 </p>
                 <p className="mt-2 text-xs font-light text-muted-foreground">
-                  + Optional hotel pickup: {visitorType === "indian" ? "₹500" : "$12"}
+                  + Optional hotel pickup: {visitorType === "indian" ? "₹500" : visitorType === "foreign" ? "$12" : "₹500 / $12"}
+                </p>
+              </div>
+
+              {/* What you'll take home */}
+              <div className="mt-4 rounded bg-[#F5F1E8] px-4 py-3">
+                <p className="font-sans text-xs text-[#3A3A3A]/70">
+                  <span className="font-semibold text-[#2E4F7E]">What you'll take home: </span>
+                  {exp.takeHome}
                 </p>
               </div>
 
               <a
-                href="#invite"
-                className="mt-8 block border border-primary py-3 text-center font-sans text-xs uppercase tracking-[0.15em] text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.querySelector("#contact");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="mt-6 block border border-primary py-3 text-center font-sans text-xs uppercase tracking-[0.15em] text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground"
               >
                 Request a Booking
               </a>
+              </div>
             </motion.div>
           ))}
         </div>
