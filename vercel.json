@@ -1,9 +1,6 @@
 {
-  "outputDirectory": "dist",
   "buildCommand": "npm run build",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -15,13 +12,26 @@
       ]
     },
     {
-      "source": "/index.html",
+      "source": "/(.*).html",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
